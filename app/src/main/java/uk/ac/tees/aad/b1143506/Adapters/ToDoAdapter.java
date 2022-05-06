@@ -51,10 +51,17 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.task.setText(item.getTask());
         holder.location.setText(item.getLocation());
         holder.task.setChecked(toBoolean(item.getStatus()));
+
         byte[] b = item.getImage();
-        Bitmap bitmapImage = BitmapFactory.decodeByteArray(b,0,b.length);
-        Log.d("bitmapImage from the ToDoAdapter: ",Integer.toString(b.length));
-        holder.image.setImageBitmap(bitmapImage);
+        if(b!=null) {
+            Bitmap bitmapImage = BitmapFactory.decodeByteArray(b, 0, b.length);
+            Log.d("bitmapImage from the ToDoAdapter: ", Integer.toString(b.length));
+            holder.image.setVisibility(View.VISIBLE);
+            holder.image.setImageBitmap(bitmapImage);
+        }else{
+            holder.image.setVisibility(View.GONE);
+
+        }
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -113,7 +120,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
             task = view.findViewById(R.id.todoCheckBox);
             location = view.findViewById(R.id.location_holder);
             image = view.findViewById(R.id.imageView);
-            image.setVisibility(View.VISIBLE);
+            //image.setVisibility(View.VISIBLE);
 
         }
     }

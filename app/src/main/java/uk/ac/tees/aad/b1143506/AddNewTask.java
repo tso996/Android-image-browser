@@ -142,6 +142,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 Log.d("this is the current activity: ",this.getClass().toString());
                 if(finalIsUpdate){
                     db.updateTask(bundle.getInt("id"), text);
+                    if (byteArray!=null)
+                    db.updateImage(bundle.getInt("id"), byteArray.toByteArray());
                 }
                 else {
                     ToDoModel task = new ToDoModel();
