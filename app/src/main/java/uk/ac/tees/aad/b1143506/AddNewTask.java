@@ -95,10 +95,15 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 if(s.toString().equals("")){
                     newTaskSaveButton.setEnabled(false);
                     newTaskSaveButton.setTextColor(Color.GRAY);
+                    newTaskCameraButton.setEnabled(false);
+                    newTaskCameraButton.setTextColor(Color.GRAY);
                 }
                 else{
                     newTaskSaveButton.setEnabled(true);
                     newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
+                    newTaskCameraButton.setEnabled(true);
+                    newTaskCameraButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
+
                 }
             }
 
