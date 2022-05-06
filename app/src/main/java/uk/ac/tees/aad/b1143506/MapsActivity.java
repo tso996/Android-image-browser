@@ -59,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 String address = addresses.get(0).getLocality();
                 if(address==""){
-                    address+="???";
+                    address+="_";
                 }
                 Log.d("the chosen location: ","="+address);
                 MainActivity.chosenCustomLocation = address;
