@@ -1,12 +1,15 @@
 package uk.ac.tees.aad.b1143506.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +50,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.task.setText(item.getTask());
         holder.location.setText(item.getLocation());
         holder.task.setChecked(toBoolean(item.getStatus()));
+        byte[] b = item.getImage();
+        Bitmap bitmapImage = BitmapFactory.decodeByteArray(b,0,b.length);
+        holder.image.setImageBitmap(bitmapImage);
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -98,10 +104,12 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox task;
         TextView location;
+        ImageView image;
         ViewHolder(View view) {
             super(view);
             task = view.findViewById(R.id.todoCheckBox);
             location = view.findViewById(R.id.location_holder);
+            image = view.findViewById(R.id.camera_image);
         }
     }
 }

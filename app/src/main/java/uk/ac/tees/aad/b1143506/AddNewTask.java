@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -29,6 +30,8 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.io.ByteArrayOutputStream;
+
 import uk.ac.tees.aad.b1143506.Model.ToDoModel;
 import uk.ac.tees.aad.b1143506.Utils.DatabaseHandler;
 
@@ -42,6 +45,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private ImageView newTaskCameraImage;
 
     private DatabaseHandler db;
+
+    Bitmap bitmapImage;
 
     public static AddNewTask newInstance(){
         return new AddNewTask();
@@ -123,6 +128,11 @@ public class AddNewTask extends BottomSheetDialogFragment {
         newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //converting bitmap to byte array
+
+                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                bitmapImage.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+                //===========
                 String text = newTaskText.getText().toString();
                 String location="";
                 if(MainActivity.getLocationCheck) {
@@ -136,6 +146,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     ToDoModel task = new ToDoModel();
                     task.setTask(text);
                     task.setLocation(location);
+                    task.setImage(byteArray.toByteArray());
                     task.setStatus(0);
                     db.insertTask(task);
                 }
@@ -143,6 +154,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
             }
         });
 
+    //the camera handler
         ActivityResultLauncher<Intent> cameraActivityLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -152,8 +164,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
                             // There are no request codes
                             Intent data = result.getData();
                             //call camera
-                            Bitmap b = (Bitmap) data.getExtras().get("data");
-                            newTaskCameraImage.setImageBitmap(b);
+                            bitmapImage = (Bitmap) data.getExtras().get("data");
+                            newTaskCameraImage.setImageBitmap(bitmapImage);
                             newTaskCameraImage.setVisibility(View.VISIBLE);
                         }
                     }

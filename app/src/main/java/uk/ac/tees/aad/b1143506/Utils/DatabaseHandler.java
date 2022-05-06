@@ -21,9 +21,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String LOCATION = "location";
     private static final String TASK = "task";
+    private static final String IMAGE = "image";
+
     private static final String STATUS = "status";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
-            + LOCATION + " TEXT, " + STATUS + " INTEGER)";
+            + LOCATION + " TEXT, "+ IMAGE + " BLOB, " + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
 
@@ -57,6 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(LOCATION, task.getLocation());
+        cv.put(IMAGE, task.getImage());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
     }
@@ -74,6 +77,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         ToDoModel task = new ToDoModel();
                         task.setId(cur.getInt(cur.getColumnIndex(ID)));
                         task.setLocation(cur.getString(cur.getColumnIndex(LOCATION)));
+                        task.setImage(cur.getBlob(cur.getColumnIndex(IMAGE)));
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
                         taskList.add(task);
