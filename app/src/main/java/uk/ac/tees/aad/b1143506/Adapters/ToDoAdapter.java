@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.task.setChecked(toBoolean(item.getStatus()));
         byte[] b = item.getImage();
         Bitmap bitmapImage = BitmapFactory.decodeByteArray(b,0,b.length);
+        Log.d("bitmapImage from the ToDoAdapter: ",Integer.toString(b.length));
         holder.image.setImageBitmap(bitmapImage);
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -96,6 +98,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         bundle.putInt("id", item.getId());
         bundle.putString("task", item.getTask());
         bundle.putString("location", item.getTask());
+        bundle.putByteArray("image",item.getImage());
         AddNewTask fragment = new AddNewTask();
         fragment.setArguments(bundle);
         fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
@@ -109,7 +112,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
             super(view);
             task = view.findViewById(R.id.todoCheckBox);
             location = view.findViewById(R.id.location_holder);
-            image = view.findViewById(R.id.camera_image);
+            image = view.findViewById(R.id.imageView);
+            image.setVisibility(View.VISIBLE);
+
         }
     }
 }

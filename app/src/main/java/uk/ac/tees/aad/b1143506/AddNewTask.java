@@ -132,6 +132,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 bitmapImage.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+                Log.d("the Byte array from addnewtask: ",byteArray.toString());
                 //===========
                 String text = newTaskText.getText().toString();
                 String location="";
