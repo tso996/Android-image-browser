@@ -60,10 +60,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = requireView().findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
-        if(MainActivity.getLocationCheck){
-            newTaskText.setHint("New task with location");
-
-        }
+        newTaskText.setHint("New task");
 
         boolean isUpdate = false;
 
