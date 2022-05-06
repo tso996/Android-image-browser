@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "ActionBottomDialog";
     private EditText newTaskText;
     private Button newTaskSaveButton;
-    private TextView newTaskLocation;
+    private Button newTaskCameraButton;
+    private ImageView newTaskCameraImage;
 
     private DatabaseHandler db;
 
@@ -61,6 +63,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
         newTaskText = requireView().findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
         newTaskText.setHint("New task");
+        newTaskCameraButton = getView().findViewById(R.id.camera_button);
+        newTaskCameraImage = getView().findViewById(R.id.camera_image);
+        newTaskSaveButton.setEnabled(false);
+        newTaskCameraButton.setEnabled(false);
 
         boolean isUpdate = false;
 
@@ -70,8 +76,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
             String task = bundle.getString("task");
             newTaskText.setText(task);
             assert task != null;
-            if(task.length()>0)
+            if(task.length()>0){
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
+                newTaskCameraButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
+            }
         }
 
         db = new DatabaseHandler(getActivity());

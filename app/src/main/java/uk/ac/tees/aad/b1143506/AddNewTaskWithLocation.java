@@ -60,6 +60,8 @@ public class AddNewTaskWithLocation extends BottomSheetDialogFragment {
         newTaskSaveButton = getView().findViewById(R.id.save_button_custom);
         customLocationButton = getView().findViewById(R.id.custom_location_button);
         newTaskText.setHint("New task with custom location");
+        newTaskSaveButton.setEnabled(false);
+        customLocationButton.setEnabled(false);
 
         boolean isUpdate = false;
 
