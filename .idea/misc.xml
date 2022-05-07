@@ -9,13 +9,17 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/add_with_location.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/add_without_location.xml" value="0.13" />
+        <entry key="app/src/main/res/drawable/button.xml" value="0.151" />
+        <entry key="app/src/main/res/drawable/button_format.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/find_location.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.20679012345679013" />
         <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/new_task.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-land/task_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/new_task_custom.xml" value="0.17916666666666667" />
+        <entry key="app/src/main/res/layout-land/task_layout.xml" value="0.17266082763671875" />
+        <entry key="app/src/main/res/layout-v31/new_task_custom.xml" value="0.26274947014407835" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14895833333333333" />

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,7 +17,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -73,7 +71,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = requireView().findViewById(R.id.newTaskText);
-        newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
+        newTaskSaveButton = getView().findViewById(R.id.Done);
         newTaskText.setHint("New task");
         newTaskCameraButton = getView().findViewById(R.id.camera_button);
         newTaskCameraImage = getView().findViewById(R.id.camera_image);
@@ -131,7 +129,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 boolean imageStatus = false;
                 //converting bitmap to byte array
                     ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                if(bitmapImage!=null) {
+                if(bitmapImage!=null) { 
                     bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
                     Log.d("the Byte array from addnewtask: ", byteArray.toString());
                     imageStatus = true;

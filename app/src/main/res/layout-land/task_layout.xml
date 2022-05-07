@@ -19,11 +19,11 @@
         <CheckBox
             android:id="@+id/todoCheckBox"
             android:layout_width="247dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
             android:buttonTint="@color/colorPrimaryDark"
             android:paddingStart="8dp"
-            tools:text="Go to the market and bring vegetables immediately today." />
+            tools:text="some text" />
 
         <TextView
             android:id="@+id/location_holder"
