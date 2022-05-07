@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -24,7 +23,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -37,10 +35,12 @@ import uk.ac.tees.aad.b1143506.Utils.DatabaseHandler;
 public class AddNewTask extends BottomSheetDialogFragment {
 
     public static final String TAG = "ActionBottomDialog";
-    private EditText newTaskText;
-    private Button newTaskSaveButton;
-    private Button newTaskCameraButton;
-    private ImageView newTaskCameraImage;
+    private EditText entryText;
+    private Button doneButton;
+    private Button cameraButton;
+    private ImageView cameraImage;
+    private Button locationButton;
+
 
     private DatabaseHandler db;
 
@@ -70,13 +70,17 @@ public class AddNewTask extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        newTaskText = requireView().findViewById(R.id.newTaskText);
-        newTaskSaveButton = getView().findViewById(R.id.Done);
-        newTaskText.setHint("Type here");
-        newTaskCameraButton = getView().findViewById(R.id.camera_button);
-        newTaskCameraImage = getView().findViewById(R.id.camera_image);
-        newTaskSaveButton.setEnabled(false);
-        newTaskCameraButton.setEnabled(false);
+        entryText = requireView().findViewById(R.id.entry_text);
+        doneButton = getView().findViewById(R.id.Done);
+        entryText.setHint("Type here");
+        cameraButton = getView().findViewById(R.id.camera_button);
+        cameraImage = getView().findViewById(R.id.camera_image);
+        locationButton = getView().findViewById(R.id.location_button);
+
+        doneButton.setEnabled(false);
+        cameraButton.setEnabled(false);
+        locationButton.setEnabled(false);
+
 
         boolean isUpdate = false;
 
@@ -84,7 +88,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         if(bundle != null){
             isUpdate = true;
             String task = bundle.getString("task");
-            newTaskText.setText(task);
+            entryText.setText(task);
             assert task != null;
 //            if(task.length()>0){
 //                newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
@@ -95,7 +99,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         db = new DatabaseHandler(getActivity());
         db.openDatabase();
 
-        newTaskText.addTextChangedListener(new TextWatcher() {
+        entryText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -103,12 +107,16 @@ public class AddNewTask extends BottomSheetDialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
-                    newTaskSaveButton.setEnabled(false);
-                    newTaskCameraButton.setEnabled(false);
+                    doneButton.setEnabled(false);
+                    cameraButton.setEnabled(false);
+                    locationButton.setEnabled(false);
+
                 }
                 else{
-                    newTaskSaveButton.setEnabled(true);
-                    newTaskCameraButton.setEnabled(true);
+                    doneButton.setEnabled(true);
+                    cameraButton.setEnabled(true);
+                    locationButton.setEnabled(true);
+
 
                 }
             }
@@ -119,7 +127,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         });
 
         final boolean finalIsUpdate = isUpdate;
-        newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
+        doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean imageStatus = false;
@@ -131,10 +139,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     imageStatus = true;
                 }
                 //===========
-                String text = newTaskText.getText().toString();
-                String location="";
-                if(MainActivity.getLocationCheck) {
-                    location = MainActivity.currentLocationAddress;
+                String text = entryText.getText().toString();
+                String location="location could not be found";
+
+                if(!(MainActivity.chosenCustomLocation==" ")){
+                    location = MainActivity.chosenCustomLocation;
+                }else{
+                    location = MainActivity.currentLocation;
                 }
                 if(finalIsUpdate){//Editing
                     db.updateTask(bundle.getInt("id"), text);
@@ -164,18 +175,26 @@ public class AddNewTask extends BottomSheetDialogFragment {
                             Intent data = result.getData();
                             //call camera
                             bitmapImage = (Bitmap) data.getExtras().get("data");
-                            newTaskCameraImage.setImageBitmap(bitmapImage);
-                            newTaskCameraImage.setVisibility(View.VISIBLE);
+                            cameraImage.setImageBitmap(bitmapImage);
+                            cameraImage.setVisibility(View.VISIBLE);
                         }
                     }
                 });
 
-        newTaskCameraButton.setOnClickListener(new View.OnClickListener() {
+        cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 cameraActivityLauncher.launch(i);
 
+            }
+        });
+
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(),MapsActivity.class);
+                startActivity(i);
             }
         });
 

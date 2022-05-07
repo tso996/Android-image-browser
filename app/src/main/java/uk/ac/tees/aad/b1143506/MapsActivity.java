@@ -90,7 +90,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (marker != null) {
                 marker.remove();
             }
-            marker = mMap.addMarker(new MarkerOptions().position(touchCoordinates).title("location ???"));
+            marker = mMap.addMarker(new MarkerOptions().position(touchCoordinates).title("Please choose again"));
             mMap.setMaxZoomPreference(10);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(touchCoordinates, 10.0f));
         }catch(Exception e){

@@ -5,7 +5,7 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/newTaskText"
+        android:id="@+id/entry_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -17,7 +17,7 @@
         android:id="@+id/Done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/newTaskText"
+        android:layout_below="@id/entry_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="0dp"
@@ -31,7 +31,7 @@
         android:id="@+id/camera_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/newTaskText"
+        android:layout_below="@id/entry_text"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_toStartOf="@+id/Done"
@@ -39,6 +39,20 @@
         android:text="Camera"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_text"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/camera_button"
+        android:background="@drawable/round_button"
+        android:text="Location"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
         android:textSize="16sp" />
 
     <ImageView

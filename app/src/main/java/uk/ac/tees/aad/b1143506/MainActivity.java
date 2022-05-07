@@ -41,13 +41,7 @@ import uk.ac.tees.aad.b1143506.Utils.DatabaseHandler;
 
 public class MainActivity extends AppCompatActivity implements DialogCloseListener {
 
-    //    Button button;
-    Animation rotateOpen;
-    Animation rotateClose;
-    Animation fromBottom;
-    Animation toBottom;
-    Animation landscape_from_bottom;
-    Animation landscape_to_bottom;
+
     //api to find location based on longitude and lattitude
 //https://api.myptv.com/geocoding/v1/locations/by-position/54.574226/-1.234956?language=en&apiKey=MjhhNDBjN2JmMmI2NGNmNGIyMWFjOWZlMDQ3OWIwOWI6MmQyMDY5YmYtOWJmMy00ZTg4LWE5NjctNDE1ZmFlMDM2MDdj
     private DatabaseHandler db;
@@ -59,11 +53,10 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private FloatingActionButton add_image_button;
     private FloatingActionButton search_location_button;
     private boolean clicked = false;
-    public static boolean getLocationCheck = false;
-    public static boolean getCustomLocation = false;
 
-    public static String currentLocationAddress = "???";
-    public static String chosenCustomLocation = " ";
+
+    public static String currentLocation = "???";
+    public static String chosenCustomLocation = "";
     double latitude;
     double longitude;
     int orientation;
@@ -125,8 +118,8 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jObject = jsonArray.getJSONObject(i);
 //                        Log.d("STATE", String.valueOf(jObject.getString("formattedAddress")));
-                                currentLocationAddress = jObject.getJSONObject("address").getString("city");
-                                Log.d("location from main: ",currentLocationAddress);
+                                currentLocation = jObject.getJSONObject("address").getString("city");
+                                Log.d("location from main: ", currentLocation);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -160,88 +153,13 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             @Override
             public void onClick(View v) {
                 orientation = getResources().getConfiguration().orientation;
-                onfabClicked();
-
-            }
-        });
-
-        add_image_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getLocationCheck = true;
                 AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
                 locationManager.removeUpdates(locationListener);
+                //onfabClicked();
 
             }
         });
-        //loads google maps activity
-        search_location_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getLocationCheck = false;
-                getCustomLocation = true;
-                locationManager.removeUpdates(locationListener);
 
-                new AddNewTaskWithLocation().show(getSupportFragmentManager(),AddNewTaskWithLocation.TAG);
-            }
-        });
-
-
-    }
-
-    public void assignAnimations(){
-        //this is put here so that the animations don't bug out after the first play
-        rotateOpen = AnimationUtils.loadAnimation(
-                this,R.anim.rotate_open_anim);
-        rotateClose = AnimationUtils.loadAnimation(
-                this,R.anim.rotate_close_anim);
-        fromBottom = AnimationUtils.loadAnimation(
-                this,R.anim.from_bottom_anim);
-        toBottom = AnimationUtils.loadAnimation(
-                this,R.anim.to_bottom_anim);
-        landscape_from_bottom = AnimationUtils.loadAnimation(this,R.anim.landscape_from_bottom_anim);
-        landscape_to_bottom = AnimationUtils.loadAnimation(this,R.anim.landscape_to_bottom_anim);
-    }
-    public void onfabClicked(){
-        assignAnimations();
-        setVisibility(clicked);
-        setAnimation(clicked);
-        clicked = !clicked;
-    }
-    public void setVisibility(boolean clicked){
-        if(clicked){
-            add_image_button.setVisibility(View.INVISIBLE);
-            search_location_button.setVisibility(View.INVISIBLE);
-
-        }else{
-            add_image_button.setVisibility(View.VISIBLE);
-            search_location_button.setVisibility(View.VISIBLE);
-
-        }
-
-    }
-    public void setAnimation(boolean clicked){
-        if(clicked){
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                add_image_button.setAnimation(landscape_to_bottom);
-                search_location_button.setAnimation(toBottom);
-            }else {
-                add_image_button.setAnimation(landscape_to_bottom);
-                search_location_button.setAnimation(toBottom);
-            }
-            fab.setAnimation(rotateClose);
-
-        }else{
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                add_image_button.setAnimation(landscape_from_bottom);
-                search_location_button.setAnimation(fromBottom);
-            }else{
-                add_image_button.setAnimation(landscape_from_bottom);
-                search_location_button.setAnimation(fromBottom);
-            }
-            fab.setAnimation(rotateOpen);
-
-        }
     }
 
     @Override
