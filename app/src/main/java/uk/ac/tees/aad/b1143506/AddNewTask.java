@@ -72,7 +72,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = requireView().findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.Done);
-        newTaskText.setHint("New task");
+        newTaskText.setHint("Type here");
         newTaskCameraButton = getView().findViewById(R.id.camera_button);
         newTaskCameraImage = getView().findViewById(R.id.camera_image);
         newTaskSaveButton.setEnabled(false);

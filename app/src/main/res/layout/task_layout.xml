@@ -29,7 +29,8 @@
             android:id="@+id/location_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="London" />
+            android:text="London"
+            android:textAlignment="viewEnd" />
 
         <ImageView
             android:id="@+id/imageView"
