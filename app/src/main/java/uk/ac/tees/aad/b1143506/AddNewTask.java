@@ -128,21 +128,23 @@ public class AddNewTask extends BottomSheetDialogFragment {
         newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean imageStatus = false;
                 //converting bitmap to byte array
-
-                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                bitmapImage.compress(Bitmap.CompressFormat.PNG,100,byteArray);
-                Log.d("the Byte array from addnewtask: ",byteArray.toString());
+                    ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                if(bitmapImage!=null) {
+                    bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+                    Log.d("the Byte array from addnewtask: ", byteArray.toString());
+                    imageStatus = true;
+                }
                 //===========
                 String text = newTaskText.getText().toString();
                 String location="";
                 if(MainActivity.getLocationCheck) {
                     location = MainActivity.currentLocationAddress;
                 }
-                Log.d("this is the current activity: ",this.getClass().toString());
-                if(finalIsUpdate){
+                if(finalIsUpdate){//Editing
                     db.updateTask(bundle.getInt("id"), text);
-                    if (byteArray!=null)
+                    if (imageStatus)
                     db.updateImage(bundle.getInt("id"), byteArray.toByteArray());
                 }
                 else {
