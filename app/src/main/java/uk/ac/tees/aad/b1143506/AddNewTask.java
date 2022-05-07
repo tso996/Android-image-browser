@@ -86,10 +86,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
             String task = bundle.getString("task");
             newTaskText.setText(task);
             assert task != null;
-            if(task.length()>0){
-                newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
-                newTaskCameraButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
-            }
+//            if(task.length()>0){
+//                newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
+//                newTaskCameraButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
+//            }
         }
 
         db = new DatabaseHandler(getActivity());
@@ -104,15 +104,11 @@ public class AddNewTask extends BottomSheetDialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
                     newTaskSaveButton.setEnabled(false);
-                    newTaskSaveButton.setTextColor(Color.GRAY);
                     newTaskCameraButton.setEnabled(false);
-                    newTaskCameraButton.setTextColor(Color.GRAY);
                 }
                 else{
                     newTaskSaveButton.setEnabled(true);
-                    newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
                     newTaskCameraButton.setEnabled(true);
-                    newTaskCameraButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
 
                 }
             }

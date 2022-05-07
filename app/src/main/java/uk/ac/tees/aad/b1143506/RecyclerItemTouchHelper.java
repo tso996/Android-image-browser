@@ -36,7 +36,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         if (direction == ItemTouchHelper.LEFT) {
             AlertDialog.Builder builder = new AlertDialog.Builder(adapter.getContext());
             builder.setTitle("Delete Task");
-            builder.setMessage("Are you sure you want to delete this Task?");
+            builder.setMessage("Are you sure you want to delete this entry?");
             builder.setPositiveButton("Confirm",
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -68,11 +68,12 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         int backgroundCornerOffset = 20;
 
         if (dX > 0) {
+            //the background when the swipe happens in the entry layout
             icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_baseline_edit);
             background = new ColorDrawable(ContextCompat.getColor(adapter.getContext(), R.color.colorPrimaryDark));
         } else {
             icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_baseline_delete);
-            background = new ColorDrawable(Color.RED);
+            background = new ColorDrawable(Color.BLACK);
         }
 
         assert icon != null;

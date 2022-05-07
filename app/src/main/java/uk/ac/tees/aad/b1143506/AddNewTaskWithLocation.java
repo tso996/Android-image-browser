@@ -89,15 +89,11 @@ public class AddNewTaskWithLocation extends BottomSheetDialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.toString().equals("")){
                     newTaskSaveButton.setEnabled(false);
-                    newTaskSaveButton.setTextColor(Color.GRAY);
                     customLocationButton.setEnabled(false);
-                    customLocationButton.setTextColor(Color.GRAY);
                 }
                 else{
                     newTaskSaveButton.setEnabled(true);
-                    newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
                     customLocationButton.setEnabled(true);
-                    customLocationButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
 
                 }
             }
