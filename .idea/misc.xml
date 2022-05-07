@@ -11,9 +11,12 @@
         <entry key="app/src/main/res/drawable/add_without_location.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/button_format.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/checked.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/custom_checkbox.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/find_location.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/unchecked.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.20679012345679013" />
         <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/new_task.xml" value="0.1" />
@@ -25,7 +28,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/new_task.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/new_task_custom.xml" value="0.14895833333333333" />
-        <entry key="app/src/main/res/layout/task_layout.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/task_layout.xml" value="0.2520107238605898" />
       </map>
     </option>
   </component>

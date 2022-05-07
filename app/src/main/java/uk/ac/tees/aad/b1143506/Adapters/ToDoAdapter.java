@@ -50,6 +50,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         final ToDoModel item = todoList.get(position);
         holder.task.setText(item.getTask());
         holder.location.setText(item.getLocation());
+        //this marks the entry as complete or not
         holder.task.setChecked(toBoolean(item.getStatus()));
 
         byte[] b = item.getImage();
@@ -65,6 +66,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.d ("check status: ","clicked");
                 if (isChecked) {
                     db.updateStatus(item.getId(), 1);
                 } else {
@@ -117,7 +119,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         ImageView image;
         ViewHolder(View view) {
             super(view);
-            task = view.findViewById(R.id.todoCheckBox);
+            task = view.findViewById(R.id.check_box);
             location = view.findViewById(R.id.location_holder);
             image = view.findViewById(R.id.imageView);
             //image.setVisibility(View.VISIBLE);
