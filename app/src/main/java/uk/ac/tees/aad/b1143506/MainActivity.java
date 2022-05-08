@@ -160,13 +160,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
     }
 
-    public void refreshAfterStrike(){
-        taskList = db.getAllTasks();
-        Collections.reverse(taskList);
-        tasksAdapter.setTasks(taskList);
-        tasksAdapter.notifyDataSetChanged();
-    }
-
     @Override
     public void handleDialogClose(DialogInterface dialog){
         taskList = db.getAllTasks();

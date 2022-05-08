@@ -69,7 +69,17 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     Activity activity = (Activity)getContext();
-                    ((uk.ac.tees.aad.b1143506.MainActivity)activity).refreshAfterStrike();
+                    ((uk.ac.tees.aad.b1143506.MainActivity)activity).handleDialogClose(new DialogInterface() {
+                        @Override
+                        public void cancel() {
+
+                        }
+
+                        @Override
+                        public void dismiss() {
+
+                        }
+                    });
                 }
             });
         } else {

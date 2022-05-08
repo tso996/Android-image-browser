@@ -80,13 +80,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
                 if (isChecked) {
                     Log.d ("check status is checked: ","clicked");
                     db.updateStatus(item.getId(), 1);
-//                    Activity activity = (Activity)getContext();
-//                    ((uk.ac.tees.aad.b1143506.MainActivity)activity).refreshAfterStrike();
+                    holder.strike.setVisibility(View.VISIBLE);
 
                 } else {
                     db.updateStatus(item.getId(), 0);
+                    holder.strike.setVisibility(View.INVISIBLE);
                 }
             }
+
         });
     }
 
