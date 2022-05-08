@@ -133,12 +133,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             }
         };
 
-        //ask for permission to get the location
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, new String[]
-//                            {Manifest.permission.ACCESS_FINE_LOCATION},
-//                    REQUEST_LOCATION_PERMISSION);
-//        }
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
 
