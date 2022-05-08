@@ -59,8 +59,11 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 
         if(toBoolean(item.getStatus())) {
             holder.strike.setVisibility(View.VISIBLE);
+            holder.shade.setVisibility(View.VISIBLE);
         }else{
             holder.strike.setVisibility(View.INVISIBLE);
+            holder.shade.setVisibility(View.INVISIBLE);
+
         }
 
         byte[] b = item.getImage();
@@ -81,10 +84,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
                     Log.d ("check status is checked: ","clicked");
                     db.updateStatus(item.getId(), 1);
                     holder.strike.setVisibility(View.VISIBLE);
+                    holder.shade.setVisibility(View.VISIBLE);
+
 
                 } else {
                     db.updateStatus(item.getId(), 0);
                     holder.strike.setVisibility(View.INVISIBLE);
+                    holder.shade.setVisibility(View.INVISIBLE);
+
                 }
             }
 
@@ -133,12 +140,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         TextView location;
         ImageView image;
         ImageView strike;
+        ImageView shade;
         ViewHolder(View view) {
             super(view);
             task = view.findViewById(R.id.check_box);
             location = view.findViewById(R.id.location_holder);
             image = view.findViewById(R.id.imageView);
             strike = view.findViewById(R.id.strike_check);
+            shade = view.findViewById(R.id.check_shade);
 
         }
     }
