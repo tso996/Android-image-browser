@@ -157,6 +157,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     task.setStatus(0);
                     db.insertTask(task);
                 }
+                MainActivity.chosenCustomLocation=" ";
                 dismiss();
             }
         });

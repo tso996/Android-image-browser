@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
         tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
         fab = findViewById(R.id.fab);
-        add_image_button = findViewById(R.id.add_image);
-        search_location_button = findViewById(R.id.search_location);
+
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         tasksAdapter = new ToDoAdapter(db,MainActivity.this);
         tasksRecyclerView.setAdapter(tasksAdapter);
@@ -153,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                 orientation = getResources().getConfiguration().orientation;
                 AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
                 locationManager.removeUpdates(locationListener);
-                //onfabClicked();
 
             }
         });

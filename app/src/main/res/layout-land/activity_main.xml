@@ -36,44 +36,12 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="@android:color/holo_red_dark"
-        android:contentDescription="@string/new_task"
+        android:contentDescription="Add entry"
         android:focusable="true"
-        android:src="@drawable/ic_baseline_add_24"
+        android:src="@drawable/ic_baseline_note_add_24"
         android:tint="@color/white" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/search_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/fab"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="0dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:contentDescription="@string/new_task"
-        android:focusable="true"
-        android:src="@drawable/find_location"
-        android:visibility="invisible" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="32dp"
-        android:layout_toStartOf="@+id/fab"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:contentDescription="@string/new_task"
-        android:focusable="true"
-        android:src="@drawable/add_with_location"
-        android:visibility="invisible" />
-
-<!--    <Button-->
+    <!--    <Button-->
 <!--        android:id="@+id/map_button"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
