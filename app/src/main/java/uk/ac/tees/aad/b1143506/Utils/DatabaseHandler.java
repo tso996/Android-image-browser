@@ -51,7 +51,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d("logger from database handler","hello");
 
         db = this.getWritableDatabase();
-//        db.execSQL("DROP TABLE IF EXISTS " + TODO_TABLE);
 
     }
 

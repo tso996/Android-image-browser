@@ -21,9 +21,11 @@
             android:layout_width="247dp"
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:buttonTint="@color/colorPrimaryDark"
+            android:button="@android:color/system_neutral2_100"
+            android:buttonTint="@color/cardview_shadow_end_color"
             android:paddingStart="8dp"
-            tools:text="some text" />
+            tools:text="some text"
+            tools:targetApi="s" />
 
         <TextView
             android:id="@+id/location_holder"

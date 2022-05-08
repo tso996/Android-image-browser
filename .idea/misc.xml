@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/unchecked.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.20679012345679013" />
+        <entry key="app/src/main/res/layout-land/activity_maps.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/new_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/new_task_custom.xml" value="0.17916666666666667" />

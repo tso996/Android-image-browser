@@ -90,10 +90,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
             String task = bundle.getString("task");
             entryText.setText(task);
             assert task != null;
-//            if(task.length()>0){
-//                newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
-//                newTaskCameraButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark));
-//            }
+
         }
 
         db = new DatabaseHandler(getActivity());
@@ -140,7 +137,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 }
                 //===========
                 String text = entryText.getText().toString();
-                String location="location could not be found";
+                String location;
 
                 if(!(MainActivity.chosenCustomLocation==" ")){
                     location = MainActivity.chosenCustomLocation;

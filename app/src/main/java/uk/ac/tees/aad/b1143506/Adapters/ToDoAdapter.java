@@ -1,5 +1,8 @@
 package uk.ac.tees.aad.b1143506.Adapters;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,6 +55,13 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         holder.location.setText(item.getLocation());
         //this marks the entry as complete or not
         holder.task.setChecked(toBoolean(item.getStatus()));
+        Log.d ("viewBinder calling: ","here");
+
+        if(toBoolean(item.getStatus())) {
+            holder.strike.setVisibility(View.VISIBLE);
+        }else{
+            holder.strike.setVisibility(View.INVISIBLE);
+        }
 
         byte[] b = item.getImage();
         if(b!=null) {
@@ -68,7 +78,11 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Log.d ("check status: ","clicked");
                 if (isChecked) {
+                    Log.d ("check status is checked: ","clicked");
                     db.updateStatus(item.getId(), 1);
+//                    Activity activity = (Activity)getContext();
+//                    ((uk.ac.tees.aad.b1143506.MainActivity)activity).refreshAfterStrike();
+
                 } else {
                     db.updateStatus(item.getId(), 0);
                 }
@@ -117,12 +131,13 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         CheckBox task;
         TextView location;
         ImageView image;
+        ImageView strike;
         ViewHolder(View view) {
             super(view);
             task = view.findViewById(R.id.check_box);
             location = view.findViewById(R.id.location_holder);
             image = view.findViewById(R.id.imageView);
-            //image.setVisibility(View.VISIBLE);
+            strike = view.findViewById(R.id.strike_check);
 
         }
     }

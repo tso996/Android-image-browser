@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
 
         tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
-//        button = (Button)findViewById(R.id.map_button);
         fab = findViewById(R.id.fab);
         add_image_button = findViewById(R.id.add_image);
         search_location_button = findViewById(R.id.search_location);
@@ -84,8 +83,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         tasksAdapter = new ToDoAdapter(db,MainActivity.this);
         tasksRecyclerView.setAdapter(tasksAdapter);
 
-        ItemTouchHelper itemTouchHelper = new
-                ItemTouchHelper(new RecyclerItemTouchHelper(tasksAdapter));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerItemTouchHelper(tasksAdapter,this));
         itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
 
 
@@ -160,6 +158,13 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             }
         });
 
+    }
+
+    public void refreshAfterStrike(){
+        taskList = db.getAllTasks();
+        Collections.reverse(taskList);
+        tasksAdapter.setTasks(taskList);
+        tasksAdapter.notifyDataSetChanged();
     }
 
     @Override

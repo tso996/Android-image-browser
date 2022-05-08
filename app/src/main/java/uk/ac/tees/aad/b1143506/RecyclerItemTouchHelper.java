@@ -1,5 +1,9 @@
 package uk.ac.tees.aad.b1143506;
 
+import static java.security.AccessController.getContext;
+
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -19,10 +23,16 @@ import uk.ac.tees.aad.b1143506.Adapters.ToDoAdapter;
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     private ToDoAdapter adapter;
+    private MainActivity activity;
 
-    public RecyclerItemTouchHelper(ToDoAdapter adapter) {
+    public Context getContext(){
+        return activity;
+    }
+
+    public RecyclerItemTouchHelper(ToDoAdapter adapter,MainActivity activity) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         this.adapter = adapter;
+        this.activity = activity;
     }
 
 
@@ -54,10 +64,19 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
             });
             AlertDialog dialog = builder.create();
             dialog.show();
+            //This fixed delete dismissing bug
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    Activity activity = (Activity)getContext();
+                    ((uk.ac.tees.aad.b1143506.MainActivity)activity).refreshAfterStrike();
+                }
+            });
         } else {
             adapter.editItem(position);
         }
     }
+
 
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
