@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "187892921566",
+    "project_id": "androidica-b4f6f",
+    "storage_bucket": "androidica-b4f6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187892921566:android:b0d130630c72b297827e4f",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.aad.b1143506"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187892921566-vk7j1q2c4tinccd5mvm1tv9k9njkeml9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGvCnvcrphHHWn2EvtP9hYmSFGXDpglYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187892921566-vk7j1q2c4tinccd5mvm1tv9k9njkeml9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
