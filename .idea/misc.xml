@@ -18,14 +18,17 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/unchecked.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.21252204585537918" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.20679012345679013" />
         <entry key="app/src/main/res/layout-land/activity_maps.xml" value="0.12610229276895943" />
+        <entry key="app/src/main/res/layout-land/activity_register.xml" value="0.21252204585537918" />
         <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/new_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/new_task_custom.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout-land/task_layout.xml" value="0.17266082763671875" />
         <entry key="app/src/main/res/layout-v31/new_task_custom.xml" value="0.26274947014407835" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_login_landscape.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.15572916666666667" />
