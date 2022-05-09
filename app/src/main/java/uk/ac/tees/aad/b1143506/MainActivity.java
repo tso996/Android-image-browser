@@ -141,7 +141,9 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             public void onClick(View v) {
                 orientation = getResources().getConfiguration().orientation;
                 AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
-                locationManager.removeUpdates(locationListener);
+                if(!(currentLocation=="???")) {
+                    locationManager.removeUpdates(locationListener);
+                }
 
             }
         });
