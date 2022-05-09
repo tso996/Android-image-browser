@@ -5,8 +5,6 @@ import androidx.fragment.app.FragmentActivity;
 import android.annotation.SuppressLint;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +20,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
-
-import uk.ac.tees.aad.b1143506.databinding.ActivityMapsBinding;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMapClickListener {
 
@@ -62,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     address+="_";
                 }
                 Log.d("the chosen location: ","="+address);
-                MainActivity.chosenCustomLocation = address;
+                MainActivity.chosenCustomisedLocation = address;
                 finish();
             }
         });

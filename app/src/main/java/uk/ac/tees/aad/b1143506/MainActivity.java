@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
 
     public static String currentLocation = "???";
-    public static String chosenCustomLocation = "";
+    public static String chosenCustomisedLocation = " ";
     double latitude;
     double longitude;
     int orientation;
@@ -141,9 +141,8 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             public void onClick(View v) {
                 orientation = getResources().getConfiguration().orientation;
                 AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
-                if(!(currentLocation=="???")) {
                     locationManager.removeUpdates(locationListener);
-                }
+
 
             }
         });

@@ -138,11 +138,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 //===========
                 String text = entryText.getText().toString();
                 String location;
-
-                if(!(MainActivity.chosenCustomLocation==" ")){
-                    location = MainActivity.chosenCustomLocation;
-                }else{
-                    location = MainActivity.currentLocation;
+                location = MainActivity.currentLocation;
+                if(!(MainActivity.chosenCustomisedLocation ==" ")){
+                    location = MainActivity.chosenCustomisedLocation;
                 }
                 if(finalIsUpdate){//Editing
                     db.updateTask(bundle.getInt("id"), text);
@@ -157,7 +155,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     task.setStatus(0);
                     db.insertTask(task);
                 }
-                MainActivity.chosenCustomLocation=" ";
+                MainActivity.chosenCustomisedLocation =" ";
                 dismiss();
             }
         });
