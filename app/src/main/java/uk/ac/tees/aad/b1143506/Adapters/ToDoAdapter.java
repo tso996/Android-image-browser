@@ -1,8 +1,5 @@
 package uk.ac.tees.aad.b1143506.Adapters;
 
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import uk.ac.tees.aad.b1143506.AddNewTask;
+import uk.ac.tees.aad.b1143506.AddNewEntry;
 import uk.ac.tees.aad.b1143506.MainActivity;
 import uk.ac.tees.aad.b1143506.Model.ToDoModel;
 import uk.ac.tees.aad.b1143506.R;
@@ -130,9 +127,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         bundle.putString("task", item.getTask());
         bundle.putString("location", item.getTask());
         bundle.putByteArray("image",item.getImage());
-        AddNewTask fragment = new AddNewTask();
+        AddNewEntry fragment = new AddNewEntry();
         fragment.setArguments(bundle);
-        fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
+        fragment.show(activity.getSupportFragmentManager(), AddNewEntry.TAG);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

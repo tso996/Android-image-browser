@@ -32,7 +32,7 @@ import uk.ac.tees.aad.b1143506.Model.ToDoModel;
 import uk.ac.tees.aad.b1143506.Utils.DatabaseHandler;
 
 //needs to handle image browsing here
-public class AddNewTask extends BottomSheetDialogFragment {
+public class AddNewEntry extends BottomSheetDialogFragment {
 
     public static final String TAG = "ActionBottomDialog";
     private EditText entryText;
@@ -46,8 +46,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
     Bitmap bitmapImage;
 
-    public static AddNewTask newInstance(){
-        return new AddNewTask();
+    public static AddNewEntry newInstance(){
+        return new AddNewEntry();
     }
 
     @Override

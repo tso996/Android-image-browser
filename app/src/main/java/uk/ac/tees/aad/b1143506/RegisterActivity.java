@@ -54,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         //This check will redirect the user to the main activity if the user's account is logged in
+        //Decided it is not needed for the ICA demo
 //        if(fAuth.getCurrentUser() != null){
 //            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 //            finish();
